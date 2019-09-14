@@ -7,9 +7,9 @@ const googleClient = require('../clients/googleClient');
  */
 const getUserProfile = async ({ context, userId }) => {
   await googleClient.authenticate({ context });
-  const userProfile = await usersDB.getUserProfile({ context, userId });
+  const profile = await usersDB.getUserProfile({ context, userId });
 
-  return userProfile;
+  return profile;
 };
 
 module.exports = {

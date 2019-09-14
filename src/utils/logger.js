@@ -17,5 +17,5 @@ const onLog = (message = '', details = '') => {
 
 module.exports = {
   onError,
-  onLog,
+  onLog
 };
