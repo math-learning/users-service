@@ -3,7 +3,7 @@
  * Get users profile.
  *
  */
-const getUserProfile = async ({ context, userId }) => ({ userId });
+const getUserProfile = async ({ userId }) => ({ userId });
 
 module.exports = {
   getUserProfile,

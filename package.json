@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "ENV=env_test eslint src tests",
     "lint:fix": "ENV=env_test eslint --fix src tests",
-    "test": "npm run eslint && npm run test:app",
+    "test": "npm run lint && npm run test:app",
     "test:app": "ENV=env_test nyc mocha tests",
     "start": "node src/app",
     "start:watch": "nodemon src/app"
@@ -15,11 +15,14 @@
     "body-parser": "~1.17.2",
     "eslint": "^6.3.0",
     "express": "~4.15.3",
+    "expressify": "^2.0.0",
     "http-errors": "~1.6.1",
+    "install": "^0.13.0",
     "knex": "^0.19.4",
     "nock": "~9.0.14",
     "node-fetch": "^2.6.0",
     "nodemon": "^1.19.2",
+    "npm": "^6.11.3",
     "promise": "~7.3.0",
     "superagent": "~3.5.2",
     "uuid": "~3.1.0"

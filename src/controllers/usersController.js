@@ -1,3 +1,4 @@
+const expressify = require('expressify')();
 const usersService = require('../services/usersService');
 const logger = require('../utils/logger.js');
 
@@ -15,6 +16,6 @@ const getUserProfile = async (req, res) => {
   return res.status(200).json(profile);
 };
 
-module.exports = {
-  getUserProfile,
-};
+module.exports = expressify({
+  getUserProfile
+});

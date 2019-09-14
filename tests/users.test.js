@@ -30,7 +30,7 @@ describe('Integration user tests', () => {
       it('body has the user profile', () => assert.deepEqual(response.body, { userId }));
     });
 
-    describe.skip('When everything is NOT ok', () => {
+    describe('When everything is NOT ok', () => {
       beforeEach(async () => {
         mocks.mockAuth({ token, status: 401 });
 

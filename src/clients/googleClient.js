@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const requestUtils = require('../utils/requestUtils');
 
 const authenticate = async ({ context }) => {
   const headers = {
@@ -10,10 +11,7 @@ const authenticate = async ({ context }) => {
     headers
   });
 
-  if (response.status >= 300) {
-    return Promise.reject();
-  }
-  return response.json();
+  return requestUtils.processResponse(response);
 };
 
 module.exports = {

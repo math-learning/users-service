@@ -22,7 +22,7 @@ app.use(initialMiddleware);
 router.get('/ping', (req, res) => statusController.ping(req, res));
 
 // Users
-router.get('/users/:userId/profile', (req, res) => usersController.getUserProfile(req, res));
+router.get('/users/:userId/profile', usersController.getUserProfile);
 
 app.use(router);
 
