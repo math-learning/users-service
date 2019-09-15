@@ -1,5 +1,9 @@
 const logger = require('../utils/logger.js');
 
+/**
+ * Log when an error occurs.
+ *
+ */
 module.exports = (err, req, res, next) => {
   if (err) {
     logger.onError(req.url, res, err);
