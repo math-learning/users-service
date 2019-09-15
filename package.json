@@ -12,6 +12,7 @@
     "start:dinamic": "NODE_ENV=development npm run db:latest && npm run db:initial-state && NODE_ENV=development nodemon src/app",
     "db:latest": "knex migrate:latest",
     "db:rollback": "knex migrate:rollback",
+    "db:rollback-all": "knex migrate:rollback --all",
     "db:initial-state": "knex seed:run"
   },
   "dependencies": {

@@ -3,7 +3,7 @@ exports.up = (knex) => {
     CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
     CREATE TABLE users(
-      id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+      id      UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
       user_id CHARACTER VARYING(256) NOT NULL,
       name    CHARACTER VARYING(128) NOT NULL
     )`;

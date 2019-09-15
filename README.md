@@ -30,6 +30,9 @@ _Note_: If you already has postgres and psql you can just write `PGPASSWORD=post
 
 _Note_: If you want to change the postgres user and/or password, edit the file `./configs.js` with this configuration.
 
+_Note_: For more information about postgres migrations, read http://knexjs.org/#Migrations-CLI
+
+
 
 ## Start the server
 
