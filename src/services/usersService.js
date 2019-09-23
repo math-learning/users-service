@@ -1,17 +1,31 @@
 const usersDB = require('../databases/usersDb');
-const googleClient = require('../clients/googleClient');
+
+/**
+ * Login.
+ *
+ */
+const login = async ({ context, userId }) => (
+  usersDB.getUser({ context, userId })
+);
+
+/**
+ * SignUp.
+ *
+ */
+const signup = async ({ context, userMetadata }) => (
+  usersDB.createUser({ context, userMetadata })
+);
 
 /**
  * Get users profile.
  *
  */
-const getUserProfile = async ({ context, userId }) => {
-  await googleClient.authenticate({ context });
-  const profile = await usersDB.getUserProfile({ context, userId });
-
-  return profile;
-};
+const getUser = async ({ context, userId }) => (
+  usersDB.getUser({ context, userId })
+);
 
 module.exports = {
-  getUserProfile,
+  login,
+  signup,
+  getUser,
 };

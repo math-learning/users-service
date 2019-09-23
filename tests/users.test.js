@@ -1,12 +1,12 @@
 const { assert } = require('chai');
-const requests = require('./requests');
+const requests = require('./utils/requests');
 const mocks = require('./utils/mocks');
 const { knex, cleanDb, sanitizeResponse } = require('./utils/db');
 
 // Starts the app
 require('../src/app.js');
 
-describe('Integration user tests', () => {
+describe.only('Integration user tests', () => {
   let error;
   let response;
 
@@ -23,28 +23,40 @@ describe('Integration user tests', () => {
     });
 
     describe('When the user exists', () => {
+      let expectedUser;
+
       beforeEach(async () => {
+        expectedUser = {
+          userId, name: 'Pepe', email: 'pepe@gmail', rol: 'student'
+        };
+
         await knex('users').insert([
-          { user_id: userId, name: 'Pepe' },
-          { user_id: 2, name: 'Papo' },
-          { user_id: 3, name: 'Popo' }
+          {
+            user_id: userId, name: 'Pepe', email: 'pepe@gmail', rol: 'student'
+          },
+          {
+            user_id: 2, name: 'Papo', email: 'papo@gmail', rol: 'student'
+          },
+          {
+            user_id: 3, name: 'Popo', email: 'popo@gmail', rol: 'student'
+          }
         ]);
       });
 
       beforeEach(async () => {
-        mocks.mockAuth({ token });
+        mocks.mockGoogleAuth({});
 
         response = await requests.getProfile({ userId, token });
       });
 
       it('status is OK', () => assert.equal(response.status, 200));
 
-      it('body has the user profile', () => assert.deepEqual(sanitizeResponse(response.body), { userId, name: 'Pepe' }));
+      it('body has the user profile', () => assert.deepEqual(sanitizeResponse(response.body), expectedUser));
     });
 
     describe('When the user not exists', () => {
       beforeEach(async () => {
-        mocks.mockAuth({ token });
+        mocks.mockGoogleAuth({ });
 
         response = await requests.getProfile({ userId, token });
       });
@@ -56,7 +68,7 @@ describe('Integration user tests', () => {
 
     describe('When Google service is unavailable', () => {
       beforeEach(async () => {
-        mocks.mockAuth({ token, status: 401 });
+        mocks.mockGoogleAuth({ status: 401 });
 
         error = await requests.getProfile({ userId, token });
       });

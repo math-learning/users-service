@@ -1,5 +1,5 @@
 const { assert } = require('chai');
-const requests = require('./requests');
+const requests = require('./utils/requests');
 
 // Starts the app
 require('../src/app.js');

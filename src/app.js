@@ -4,8 +4,10 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 
 const configs = require('../configs');
-const loggerMiddleware = require('./middlewares/loggerMiddleware');
+const errorMiddleware = require('./middlewares/errorMiddleware');
 const initialMiddleware = require('./middlewares/initialMiddleware');
+const authMiddleware = require('./middlewares/authMiddleware');
+const requestLoggerMiddleware = require('./middlewares/requestLoggerMiddleware');
 
 const statusController = require('./controllers/statusController');
 const usersController = require('./controllers/usersController');
@@ -16,17 +18,22 @@ const { port } = configs.app;
 //  Body parser middleware
 app.use(bodyParser.json());
 
-app.use(initialMiddleware);
+app.use(requestLoggerMiddleware);
 
 // Routes
 router.get('/ping', (req, res) => statusController.ping(req, res));
 
+router.use(initialMiddleware);
+router.use(authMiddleware);
+
 // Users
-router.get('/users/:userId/profile', usersController.getUserProfile);
+router.get('/login', usersController.login);
+router.post('/signup', usersController.signup);
+router.get('/users/:userId/profile', usersController.getUser);
 
 app.use(router);
 
-app.use(loggerMiddleware);
+app.use(errorMiddleware);
 
 //  Setting the invalid enpoint message for any other route
 app.get('*', (req, res) => {

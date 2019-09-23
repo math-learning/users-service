@@ -1,12 +1,11 @@
 const nock = require('nock');
 
-const mockAuth = ({ token, status = 200, response = {} }) => {
-  nock('https://google.com')
-    .get('/auth')
-    .matchHeader('Authorization', token)
+const mockGoogleAuth = ({ status = 200, response = {} }) => {
+  nock('https://www.googleapis.com/oauth2/v2')
+    .get('/userinfo')
     .reply(status, response);
 };
 
 module.exports = {
-  mockAuth
+  mockGoogleAuth
 };

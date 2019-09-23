@@ -3,9 +3,9 @@ const TEST_ENV = 'test';
 
 const onError = (funName, res, err) => {
   if (err.stack && NODE_ENV !== TEST_ENV) {
-    console.log(`Error in: ${funName}: ${JSON.stringify(err.stack)}`);
+    console.log(`Error in: ${funName}\n`, err.stack);
   } else if (NODE_ENV !== TEST_ENV) {
-    console.log(`Error in: ${funName}: ${JSON.stringify(err)}`);
+    console.log(`Error in: ${funName}\n`, err);
   }
 };
 

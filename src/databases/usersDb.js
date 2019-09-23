@@ -1,14 +1,14 @@
 const createError = require('http-errors');
 
-const { processDbResponse } = require('../utils/dbUtils');
+const { processDbResponse, snakelize } = require('../utils/dbUtils');
 const configs = require('../../configs');
 const knex = require('knex')(configs.db); // eslint-disable-line
 
 /**
- * Get users profile.
+ * Get user.
  *
  */
-const getUserProfile = async ({ userId }) => (
+const getUser = async ({ userId }) => (
   knex('users')
     .select()
     .where('user_id', userId)
@@ -22,6 +22,24 @@ const getUserProfile = async ({ userId }) => (
     })
 );
 
+/**
+ * Create user.
+ *
+ */
+const createUser = async ({ userMetadata }) => (
+  knex('users')
+    .insert(snakelize(userMetadata))
+    .returning('*')
+    .then(processDbResponse)
+    .catch((err) => {
+      if (err.code === '23505') {
+        throw new createError.Conflict('User already exists');
+      }
+      throw err;
+    })
+);
+
 module.exports = {
-  getUserProfile,
+  getUser,
+  createUser
 };
