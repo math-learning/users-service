@@ -38,7 +38,7 @@ _Note_: For more information about postgres migrations, read http://knexjs.org/#
 
 #### `npm start`
 
-_Note_: Now your server is ready in the port specified in the file `./configs.js`. By default the port `5000` is choosen.
+_Note_: Now your server is ready in the port specified in the file `./configs.js`. By default the port `7000` is choosen.
 
 
 ## Run tests

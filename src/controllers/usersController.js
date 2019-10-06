@@ -33,7 +33,7 @@ const signup = async (req, res) => {
   };
 
   if (!name || !rol || !availableRoles.includes(rol)) {
-    return Promise.reject(createError.BadRequest('Authorization has not been provided'));
+    return Promise.reject(createError.BadRequest('name or rol have not been provided'));
   }
 
   await usersService.signup({
