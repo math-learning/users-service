@@ -4,7 +4,7 @@ const router = express.Router();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-const configs = require('../configs');
+const configs = require('./config')();
 const errorMiddleware = require('./middlewares/errorMiddleware');
 const initialMiddleware = require('./middlewares/initialMiddleware');
 const authMiddleware = require('./middlewares/authMiddleware');
@@ -45,6 +45,10 @@ app.get('*', (req, res) => {
 });
 
 //  Start server on port
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server started at port ${port}`);
 });
+
+module.exports = {
+  server
+};

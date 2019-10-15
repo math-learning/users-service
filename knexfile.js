@@ -1,8 +1,9 @@
-const configs = require('./configs');
+const devConfs = require('./configs/development');
+const testConfs = require('./configs/test');
 
 module.exports = {
   development: {
-    ...configs.db,
+    ...devConfs.db,
     migrations: {
       directory: './db/migrations'
     },
@@ -12,7 +13,7 @@ module.exports = {
     useNullAsDefault: true
   },
   test: {
-    ...configs.db,
+    ...testConfs.db,
     migrations: {
       directory: './db/migrations'
     },

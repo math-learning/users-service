@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const configs = require('../../configs');
+const configs = require('../../configs/test');
 
 const knex = require('knex')(configs.db); // eslint-disable-line
 

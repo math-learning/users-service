@@ -1,6 +1,6 @@
 const url = require('url');
 const fetch = require('node-fetch');
-const configs = require('../../configs');
+const configs = require('../../configs/test');
 
 const baseUrl = url.format(configs.app);
 

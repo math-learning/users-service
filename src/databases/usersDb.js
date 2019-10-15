@@ -1,7 +1,7 @@
 const createError = require('http-errors');
 
 const { processDbResponse, snakelize } = require('../utils/dbUtils');
-const configs = require('../../configs');
+const configs = require('../config')();
 const knex = require('knex')(configs.db); // eslint-disable-line
 
 /**
