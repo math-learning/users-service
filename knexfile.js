@@ -1,14 +1,14 @@
-const devConfs = require('./configs/development');
+const devConfs = require('./configs/dev');
 const testConfs = require('./configs/test');
 
 module.exports = {
-  development: {
+  dev: {
     ...devConfs.db,
     migrations: {
       directory: './db/migrations'
     },
     seeds: {
-      directory: './db/seeds/development'
+      directory: './db/seeds/dev'
     },
     useNullAsDefault: true
   },
