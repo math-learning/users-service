@@ -1,7 +1,6 @@
 const createError = require('http-errors');
 const expressify = require('expressify')();
 const usersService = require('../services/usersService');
-const logger = require('../utils/logger.js');
 
 /**
  * Login.
@@ -48,8 +47,6 @@ const signup = async (req, res) => {
  *
  */
 const getUser = async (req, res) => {
-  logger.onLog('Request:', `${req.method} ${req.url}`);
-
   const profile = await usersService.getUser({
     context: req.context,
     userId: req.params.userId
