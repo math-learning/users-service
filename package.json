@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "lint": "export NODE_ENV=test eslint src tests db",
-    "lint:fix": "export NODE_ENV=test eslint --fix src tests db",
+    "lint": "export NODE_ENV=test eslint src test db",
+    "lint:fix": "export NODE_ENV=test eslint --fix src test db",
     "test:app": "export NODE_ENV=test && npm run db:latest && node ./node_modules/.bin/_mocha",
     "test:watch": "npm run test:app -- --watch",
     "test": "npm run lint && nyc --reporter=html --reporter=text npm run test:app",
