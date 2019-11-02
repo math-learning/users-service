@@ -1,6 +1,10 @@
 
 exports.seed = async (knex) => {
-  await knex('users').del();
+  const currentRows = await knex('users').select();
+
+  if (currentRows.length) {
+    return;
+  }
   await knex('users').insert([
     {
       user_id: 1, name: 'Diego', email: 'diego@gmail.com', rol: 'professor'
