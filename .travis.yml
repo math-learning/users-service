@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - 11.5
+install:
+  - npm install
+services:
+  - postgresql
+env:
+  global:
+  - NODE_ENV=test
+
+before_script:
+  - psql -c 'CREATE DATABASE users_service;' -U postgres
+  - npm install -g knex
+  - npm run db:latest
+script:
+  - npm test
