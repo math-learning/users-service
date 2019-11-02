@@ -1,5 +1,7 @@
 # Users-service
 
+[![Coverage Status](https://coveralls.io/repos/github/math-learning/users-service/badge.svg)](https://coveralls.io/github/math-learning/users-service)
+
 Service of the Math Learning platform. Used to store users metadata and manage authentication and authorization for the platform.
 
 
