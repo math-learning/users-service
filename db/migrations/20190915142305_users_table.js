@@ -15,7 +15,9 @@ exports.up = (knex) => {
 
 exports.down = (knex) => {
   const query = `
-    DROP TABLE users`;
+    DROP TABLE users;
+    DROP TYPE user_rol;
+  `;
 
   return knex.raw(query);
 };
