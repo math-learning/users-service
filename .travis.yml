@@ -16,3 +16,5 @@ before_script:
   - npm run db:latest
 script:
   - npm test
+after_success:
+  - npm run coverage
