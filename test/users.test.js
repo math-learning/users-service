@@ -26,18 +26,18 @@ describe('Integration user tests', () => {
 
       beforeEach(async () => {
         expectedUser = {
-          userId, name: 'Pepe', email: 'pepe@gmail', rol: 'student'
+          userId, name: 'Pepe', email: 'pepe@gmail', role: 'student'
         };
 
         await knex('users').insert([
           {
-            user_id: userId, name: 'Pepe', email: 'pepe@gmail', rol: 'student'
+            user_id: userId, name: 'Pepe', email: 'pepe@gmail', role: 'student'
           },
           {
-            user_id: 2, name: 'Papo', email: 'papo@gmail', rol: 'student'
+            user_id: 2, name: 'Papo', email: 'papo@gmail', role: 'student'
           },
           {
-            user_id: 3, name: 'Popo', email: 'popo@gmail', rol: 'student'
+            user_id: 3, name: 'Popo', email: 'popo@gmail', role: 'student'
           }
         ]);
       });
@@ -88,18 +88,18 @@ describe('Integration user tests', () => {
 
       beforeEach(async () => {
         expectedUser = {
-          userId, name: 'Pepe', email: 'pepe@gmail', rol: 'student'
+          userId, name: 'Pepe', email: 'pepe@gmail', role: 'student'
         };
 
         await knex('users').insert([
           {
-            user_id: userId, name: 'Pepe', email: 'pepe@gmail', rol: 'student'
+            user_id: userId, name: 'Pepe', email: 'pepe@gmail', role: 'student'
           },
           {
-            user_id: 2, name: 'Papo', email: 'papo@gmail', rol: 'student'
+            user_id: 2, name: 'Papo', email: 'papo@gmail', role: 'student'
           },
           {
-            user_id: 3, name: 'Popo', email: 'popo@gmail', rol: 'student'
+            user_id: 3, name: 'Popo', email: 'popo@gmail', role: 'student'
           }
         ]);
       });
@@ -142,17 +142,17 @@ describe('Integration user tests', () => {
     let userId;
     let email;
     let name;
-    let rol;
+    let role;
     let userMetadata;
 
     beforeEach(() => {
       email = 'pepe@gmail';
       userId = '123456';
       name = 'user name';
-      rol = 'student';
+      role = 'student';
       userMetadata = {
         name,
-        rol
+        role
       };
     });
 
@@ -166,10 +166,10 @@ describe('Integration user tests', () => {
 
         await knex('users').insert([
           {
-            user_id: 2, name: 'Papo', email: 'papo@gmail', rol: 'student'
+            user_id: 2, name: 'Papo', email: 'papo@gmail', role: 'student'
           },
           {
-            user_id: 3, name: 'Popo', email: 'popo@gmail', rol: 'student'
+            user_id: 3, name: 'Popo', email: 'popo@gmail', role: 'student'
           }
         ]);
       });
@@ -189,13 +189,13 @@ describe('Integration user tests', () => {
       beforeEach(async () => {
         await knex('users').insert([
           {
-            user_id: userId, name: 'Pepe', email: 'pepe@gmail', rol: 'student'
+            user_id: userId, name: 'Pepe', email: 'pepe@gmail', role: 'student'
           },
           {
-            user_id: 2, name: 'Papo', email: 'papo@gmail', rol: 'student'
+            user_id: 2, name: 'Papo', email: 'papo@gmail', role: 'student'
           },
           {
-            user_id: 3, name: 'Popo', email: 'popo@gmail', rol: 'student'
+            user_id: 3, name: 'Popo', email: 'popo@gmail', role: 'student'
           }
         ]);
       });
@@ -209,7 +209,7 @@ describe('Integration user tests', () => {
       it('status is conflict', () => assert.equal(error.status, 409));
     });
 
-    describe('When the rol is not sent', () => {
+    describe('When the role is not sent', () => {
       beforeEach(async () => {
         mocks.mockGoogleAuth({ response: { id: userId, email } });
 
@@ -219,11 +219,11 @@ describe('Integration user tests', () => {
       it('status is bad request', () => assert.equal(error.status, 400));
     });
 
-    describe('When the rol is invalid', () => {
+    describe('When the role is invalid', () => {
       beforeEach(async () => {
         mocks.mockGoogleAuth({ response: { id: userId, email } });
 
-        error = await requests.signup({ token, userMetadata: { rol: 'admin' } });
+        error = await requests.signup({ token, userMetadata: { role: 'admin' } });
       });
 
       it('status is bad request', () => assert.equal(error.status, 400));
@@ -233,7 +233,7 @@ describe('Integration user tests', () => {
       beforeEach(async () => {
         mocks.mockGoogleAuth({ response: { id: userId, email } });
 
-        error = await requests.signup({ token, userMetadata: { rol } });
+        error = await requests.signup({ token, userMetadata: { role } });
       });
 
       it('status is bad request', () => assert.equal(error.status, 400));

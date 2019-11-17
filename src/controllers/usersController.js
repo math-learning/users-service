@@ -22,17 +22,17 @@ const login = async (req, res) => {
 const signup = async (req, res) => {
   const availableRoles = ['professor', 'student'];
   const { context } = req;
-  const { name, rol } = req.body;
+  const { name, role } = req.body;
   const { email, id } = context.googleProfile;
   const userMetadata = {
     userId: id,
     name,
-    rol,
+    role,
     email
   };
 
-  if (!name || !rol || !availableRoles.includes(rol)) {
-    return Promise.reject(createError.BadRequest('name or rol have not been provided'));
+  if (!name || !role || !availableRoles.includes(role)) {
+    return Promise.reject(createError.BadRequest('name or role have not been provided'));
   }
 
   await usersService.signup({
