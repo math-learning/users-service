@@ -34,6 +34,7 @@ router.use(authMiddleware);
 router.get('/login', usersController.login);
 router.post('/signup', usersController.signup);
 router.get('/users/:userId/profile', usersController.getUser);
+router.post('/users/profile', usersController.getUsersAsBulk);
 
 app.use(router);
 

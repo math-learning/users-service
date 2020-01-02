@@ -15,8 +15,26 @@ const getUser = async ({ userId }) => (
     .returning('*')
     .then(processDbResponse)
     .then((response) => {
-      if (!response) {
+      if (!response.length) {
         throw new createError.NotFound('User not found');
+      }
+      return response[0];
+    })
+);
+
+/**
+ * Get users by ids.
+ *
+ */
+const getUsersByIds = async ({ userIds = [] }) => (
+  knex('users')
+    .select()
+    .whereIn('user_id', userIds)
+    .returning('*')
+    .then(processDbResponse)
+    .then((response) => {
+      if (!response) {
+        throw new createError.NotFound('No users found');
       }
       return response;
     })
@@ -41,5 +59,6 @@ const createUser = async ({ userMetadata }) => (
 
 module.exports = {
   getUser,
+  getUsersByIds,
   createUser
 };

@@ -54,8 +54,22 @@ const getUser = async (req, res) => {
   return res.status(200).json(profile);
 };
 
+/**
+ * Get users as bulk.
+ *
+ */
+const getUsersAsBulk = async (req, res) => {
+  const { userIds } = req.body;
+  const profiles = await usersService.getUsersAsBulk({
+    context: req.context,
+    userIds
+  });
+  return res.status(200).json(profiles);
+};
+
 module.exports = expressify({
   login,
   signup,
-  getUser
+  getUser,
+  getUsersAsBulk
 });

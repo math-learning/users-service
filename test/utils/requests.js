@@ -47,6 +47,20 @@ const getProfile = async ({ userId, token }) => {
   return { status: response.status, body: await response.json() };
 };
 
+const getProfiles = async ({ userIds, token }) => {
+  const profileUrl = `${baseUrl}/users/profile`;
+
+  const response = await fetch(profileUrl, {
+    headers: {
+      authorization: token,
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify({ userIds })
+  });
+  return { status: response.status, body: await response.json() };
+};
+
 function errorWrapper(funct) {
   return function inner(...args) {
     try {
@@ -61,5 +75,6 @@ module.exports = {
   signup: errorWrapper(signup),
   login: errorWrapper(login),
   getProfile: errorWrapper(getProfile),
+  getProfiles: errorWrapper(getProfiles),
   status: errorWrapper(status)
 };

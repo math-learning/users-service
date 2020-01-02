@@ -24,8 +24,19 @@ const getUser = async ({ context, userId }) => (
   usersDB.getUser({ context, userId })
 );
 
+/**
+ * Get users profile.
+ *
+ */
+const getUsersAsBulk = async ({ context, userIds }) => {
+  const ids = userIds.map((user) => user.id);
+
+  return usersDB.getUsersByIds({ context, userIds: ids });
+};
+
 module.exports = {
   login,
   signup,
   getUser,
+  getUsersAsBulk
 };

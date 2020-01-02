@@ -17,7 +17,7 @@ exports.seed = async (knex) => {
     email: 'diego@fi.uba.ar',
     name: 'Diego Kim',
     role: 'professor',
-    user_id: 'diego-id'
+    user_id: '117307029770597899245'
   };
   const mendez = {
     email: 'mendez@fi.uba.ar',

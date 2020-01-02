@@ -76,6 +76,75 @@ describe('Integration user tests', () => {
     });
   });
 
+  describe('Get users profile', () => {
+    let expectedUserProfiles;
+
+    beforeEach(async () => {
+      await knex('users').insert([
+        {
+          user_id: '1', name: 'Pepe', email: 'pepe@gmail', role: 'student'
+        },
+        {
+          user_id: '2', name: 'Papo', email: 'papo@gmail', role: 'student'
+        },
+        {
+          user_id: '3', name: 'Popo', email: 'popo@gmail', role: 'student'
+        }
+      ]);
+    });
+
+    describe('When the user exists', () => {
+      beforeEach(async () => {
+        expectedUserProfiles = [{
+          userId: '1', name: 'Pepe', email: 'pepe@gmail', role: 'student'
+        }, {
+          userId: '2', name: 'Papo', email: 'papo@gmail', role: 'student'
+        }];
+      });
+
+      beforeEach(async () => {
+        mocks.mockGoogleAuth({});
+        const userIds = [{ id: '1' }, { id: '2' }];
+
+        response = await requests.getProfiles({ userIds, token });
+      });
+
+      it('status is OK', () => assert.equal(response.status, 200));
+
+      it('body has the user profiles', () => assert.deepEqual(sanitizeResponse(response.body), expectedUserProfiles));
+    });
+
+    describe('When some user does not exists', () => {
+      beforeEach(async () => {
+        expectedUserProfiles = [{
+          userId: '1', name: 'Pepe', email: 'pepe@gmail', role: 'student'
+        }];
+      });
+
+      beforeEach(async () => {
+        mocks.mockGoogleAuth({ });
+        const userIds = [{ id: '1' }, { id: '4' }];
+
+        response = await requests.getProfiles({ userIds, token });
+      });
+
+      it('status is OK', () => assert.equal(response.status, 200));
+
+      it('body has the user profiles that have been found', () => assert.deepEqual(sanitizeResponse(response.body), expectedUserProfiles));
+    });
+
+    describe('When token is invalid', () => {
+      beforeEach(async () => {
+        mocks.mockGoogleAuth({ status: 401 });
+        const userIds = [{ id: '1' }, { id: '2' }];
+
+        error = await requests.getProfile({ userIds, token });
+      });
+
+      it('status is unauthorized', () => assert.equal(error.status, 401));
+    });
+  });
+
   describe('Login', () => {
     let userId;
 
