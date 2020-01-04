@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f07f2c77-2ace-492e-9ac5-a138cb36a4fd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile-db" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1V28frEpk04B71fS82BwqvSQXzi" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f07f2c77-2ace-492e-9ac5-a138cb36a4fd" name="Default Changelist" comment="" />
+      <created>1576439936107</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1576439936107</updated>
+      <workItem from="1576439937651" duration="533000" />
+      <workItem from="1577548878608" duration="1925000" />
+      <workItem from="1577558917661" duration="441000" />
+      <workItem from="1578154295145" duration="1180000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="128" y="90" key="MergeDialog" timestamp="1578154345130">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="128" y="90" key="MergeDialog/0.23.1280.777@0.23.1280.777" timestamp="1578154345130" />
+    <state x="353" y="134" key="MultipleFileMergeDialog" timestamp="1578154394460">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="353" y="134" key="MultipleFileMergeDialog/0.23.1280.777@0.23.1280.777" timestamp="1578154394460" />
+    <state x="149" y="50" key="SettingsEditor" timestamp="1577557962630">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="149" y="50" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1577557962630" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1578158141665">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.23.1280.777@0.23.1280.777" timestamp="1578158141665" />
+  </component>
+</project>
