@@ -25,6 +25,12 @@ exports.seed = async (knex) => {
     role: 'professor',
     user_id: 'mendez-id'
   };
+  const grymberg = {
+    email: 'grymberg@fi.uba.ar',
+    name: 'Grymberg',
+    role: 'professor',
+    user_id: 'grymberg-id'
+  };
   const juanma = {
     email: 'juanma@fi.uba.ar',
     name: 'Juan Manuel Fernandez Caeiro',
@@ -45,13 +51,28 @@ exports.seed = async (knex) => {
     role: 'student',
     user_id: 'pillud-id'
   };
+  const milito = {
+    email: 'milito@fi.uba.ar',
+    name: 'Diego Milito',
+    role: 'student',
+    user_id: 'milito-id'
+  };
+  const diaz = {
+    email: 'chelo-diaz@fi.uba.ar',
+    name: 'Chelo Diaz',
+    role: 'student',
+    user_id: 'diaz-id'
+  };
 
   await knex('users').insert([
     lucas,
     diego,
     mendez,
+    grymberg,
     juanma,
     licha,
-    pillud
+    pillud,
+    milito,
+    diaz
   ]);
 };
