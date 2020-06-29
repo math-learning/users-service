@@ -23,7 +23,7 @@ const signup = async (req, res) => {
   const availableRoles = ['professor', 'student'];
   const { context } = req;
   const { name, role } = req.body;
-  const { email, id } = context.googleProfile;
+  const { email, id, picture } = context.googleProfile;
   const userMetadata = {
     userId: id,
     name,
@@ -39,7 +39,7 @@ const signup = async (req, res) => {
     context,
     userMetadata
   });
-  return res.status(201).json(userMetadata);
+  return res.status(201).json({ ...userMetadata, photo: picture });
 };
 
 /**

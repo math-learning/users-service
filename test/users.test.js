@@ -6,9 +6,11 @@ const { knex, cleanDb, sanitizeResponse } = require('./utils/db');
 describe('Integration user tests', () => {
   let token;
   let error;
+  let photo;
   let response;
 
   before(() => {
+    photo = 'http://militohayunosolo.com';
     token = 'token';
     return cleanDb();
   });
@@ -157,7 +159,7 @@ describe('Integration user tests', () => {
 
       beforeEach(async () => {
         expectedUser = {
-          userId, name: 'Pepe', email: 'pepe@gmail', role: 'student'
+          userId, name: 'Pepe', email: 'pepe@gmail', role: 'student', photo
         };
 
         await knex('users').insert([
@@ -174,7 +176,7 @@ describe('Integration user tests', () => {
       });
 
       beforeEach(async () => {
-        mocks.mockGoogleAuth({ response: { id: userId } });
+        mocks.mockGoogleAuth({ response: { id: userId, picture: photo } });
 
         response = await requests.login({ token });
       });
@@ -230,7 +232,7 @@ describe('Integration user tests', () => {
 
       beforeEach(async () => {
         expectedUser = {
-          userId, email, ...userMetadata
+          userId, email, ...userMetadata, photo
         };
 
         await knex('users').insert([
@@ -244,7 +246,7 @@ describe('Integration user tests', () => {
       });
 
       beforeEach(async () => {
-        mocks.mockGoogleAuth({ response: { id: userId, email } });
+        mocks.mockGoogleAuth({ response: { id: userId, email, picture: photo } });
 
         response = await requests.signup({ token, userMetadata });
       });

@@ -1,12 +1,20 @@
 const usersDB = require('../databases/usersDb');
 
+const fillUserPhoto = ({ context, profile }) => {
+  const { googleProfile } = context;
+
+  return { ...profile, photo: googleProfile.picture };
+};
+
 /**
  * Login.
  *
  */
-const login = async ({ context, userId }) => (
-  usersDB.getUser({ context, userId })
-);
+const login = async ({ context, userId }) => {
+  const profile = await usersDB.getUser({ context, userId });
+
+  return fillUserPhoto({ context, profile });
+};
 
 /**
  * SignUp.
